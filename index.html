@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#102a13" />
+  <meta name="description" content=" Rak Mak Mak Naaaa" />
+  <title>Happy Birthday I KAK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Mali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="intro-locked release-locked">
+  <!-- หน้ารอเปิดเว็บไซต์: ปลดล็อก 09/09/2026 เวลา 00:00 น. ประเทศไทย -->
+  <section class="release-gate" id="release-gate" aria-label="นับถอยหลังสู่วันเปิดของขวัญ">
+    <div class="release-space" aria-hidden="true">
+      <span class="release-orbit orbit-one"></span>
+      <span class="release-orbit orbit-two"></span>
+      <span class="release-star star-a">✦</span>
+      <span class="release-star star-b">✨</span>
+      <span class="release-star star-c">💚</span>
+      <span class="release-star star-d">♡</span>
+    </div>
+
+    <article class="release-card">
+      <div class="release-alien-wrap" aria-hidden="true">
+        <span class="release-halo"></span>
+        <img src="assets/green-alien.png" alt="" class="release-alien" />
+      </div>
+
+      <p class="release-kicker">GREEN GALAXY • SPECIAL DELIVERY</p>
+      <h1>รอก่อนน้าาา ไม่ต้อรีบบ</h1>
+      <p class="release-copy">ไออ้วนสามตากำลังเฝ้าประตูไว้ให้ จนกว่าจะถึงวันเกิดอ้วนน 💚</p>
+
+      <div class="release-timer" id="release-timer" role="timer" aria-live="polite">
+        <div class="release-time-box"><strong id="release-days">00</strong><span>วัน</span></div>
+        <i>:</i>
+        <div class="release-time-box"><strong id="release-hours">00</strong><span>ชั่วโมง</span></div>
+        <i>:</i>
+        <div class="release-time-box"><strong id="release-minutes">00</strong><span>นาที</span></div>
+        <i>:</i>
+        <div class="release-time-box"><strong id="release-seconds">00</strong><span>วินาที</span></div>
+      </div>
+
+      <div class="release-date-pill">
+        <span>🗓️</span> เปิดวันที่ <strong>09.09.2026</strong> เวลา <strong>00:00 น.</strong>
+      </div>
+
+      <p class="release-status" id="release-status">กำลังนับถอยหลังตามเวลาไทย</p>
+      <div class="release-progress" aria-hidden="true"><span id="release-progress-bar"></span></div>
+    </article>
+  </section>
+
+  <!-- ประตูรหัสลับ: รหัส 1234 -->
+  <section class="password-gate" id="password-gate" aria-label="กรอกรหัสลับเพื่อเข้าเว็บไซต์">
+    <div class="password-space-dust" aria-hidden="true"></div>
+    <div class="password-card" id="password-card">
+      <div class="password-alien-wrap" aria-hidden="true">
+        <span class="password-orbit orbit-a"></span>
+        <span class="password-orbit orbit-b"></span>
+        <img src="assets/green-alien.png" alt="" class="password-alien-image" />
+      </div>
+      <p class="password-kicker">TOP SECRET GALAXY</p>
+      <h1>ใส่รหัสลับก่อนน้า</h1>
+      <p class="password-copy">มีเพียงคนพิเศษเท่านั้นที่เปิดจดหมายจากกาแล็กซีนี้ได้ 💚</p>
+      <form class="password-form" id="password-form" novalidate>
+        <label class="sr-only" for="password-input">รหัสผ่าน 4 หลัก</label>
+        <div class="password-input-wrap">
+          <input id="password-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="••••" aria-describedby="password-error" />
+          <span class="password-scan" aria-hidden="true"></span>
+        </div>
+        <button class="primary-btn password-submit" type="submit">
+          <span>ปลดล็อกกาแล็กซี</span><span>✦</span>
+        </button>
+      </form>
+      <p class="password-error" id="password-error" role="status" aria-live="polite"></p>
+      <div class="password-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <!-- นับถอยหลังหลังใส่รหัสถูก -->
+  <section class="galaxy-countdown" id="galaxy-countdown" aria-label="กำลังเปิดประตูกาแล็กซี" hidden>
+    <div class="countdown-nebula" aria-hidden="true"></div>
+    <div class="countdown-stars" aria-hidden="true"><span>✦</span><span>♡</span><span>✨</span><span>💚</span></div>
+    <div class="countdown-content">
+      <p class="countdown-label">ACCESS GRANTED</p>
+      <div class="countdown-orbit" aria-hidden="true">
+        <span class="countdown-number" id="countdown-number">3</span>
+        <i></i><i></i><i></i>
+      </div>
+      <h2 id="countdown-message">กำลังเปิดประตูกาแล็กซี</h2>
+      <p>เตรียมรับจดหมายจากเจ้าตัวเขียวได้เลย 💚</p>
+      <div class="countdown-loader" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+  <!-- ซองจดหมายเปิดเว็บ -->
+  <section class="envelope-intro is-waiting" id="envelope-intro" aria-label="เปิดจดหมายวันเกิด">
+    <div class="intro-stars" aria-hidden="true"><span>✦</span><span>♡</span><span>✨</span><span>💚</span></div>
+    <button class="envelope-wrap" id="open-envelope" type="button" aria-label="เปิดซองจดหมาย">
+      <span class="envelope-shadow"></span>
+      <span class="envelope">
+        <span class="envelope-back"></span>
+        <span class="letter-preview">
+          <small>SPECIAL DELIVERY</small>
+          <strong>ถึง ไอหมูอ้วน 💌</strong>
+          <em>มีจดหมายจากกาแล็กซีมาส่ง</em>
+        </span>
+        <span class="envelope-front"></span>
+        <span class="envelope-flap"></span>
+        <span class="envelope-seal">💚</span>
+      </span>
+      <span class="open-hint">แตะเพื่อเปิดจดหมาย</span>
+    </button>
+  </section>
+
+  <!-- Cute ambience -->
+  <div class="soft-grain" aria-hidden="true"></div>
+  <div class="cute-aurora aurora-pink" aria-hidden="true"></div>
+  <div class="cute-aurora aurora-mint" aria-hidden="true"></div>
+  <div class="cute-aurora aurora-lilac" aria-hidden="true"></div>
+  <div class="cute-decor" aria-hidden="true">
+    <span style="--x:6%;--y:16%;--d:0s;--s:1.05">💚</span>
+    <span style="--x:14%;--y:76%;--d:1.1s;--s:.75">✦</span>
+    <span style="--x:28%;--y:9%;--d:2.4s;--s:.62">♡</span>
+    <span style="--x:43%;--y:84%;--d:.7s;--s:.72">✨</span>
+    <span style="--x:61%;--y:12%;--d:1.8s;--s:.66">💫</span>
+    <span style="--x:73%;--y:77%;--d:2.8s;--s:.9">💚</span>
+    <span style="--x:88%;--y:19%;--d:.3s;--s:.78">✦</span>
+    <span style="--x:94%;--y:63%;--d:1.5s;--s:.7">♡</span>
+  </div>
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <div id="cursor-trail" aria-hidden="true"></div>
+  <div id="portal" aria-hidden="true"></div>
+
+  <button class="sound-toggle" id="sound-toggle" type="button" aria-label="เปิดหรือปิดเสียง">
+    <span class="sound-icon">🔊</span>
+  </button>
+
+  <!-- ตัวนับเกมตามหาหัวใจลับ -->
+  <aside class="heart-hunt-counter" id="heart-hunt-counter" aria-live="polite">
+    <span class="heart-counter-icon" aria-hidden="true">💚</span>
+    <span class="heart-counter-copy">
+      <small>หัวใจลับ</small>
+      <strong><span id="heart-found-count">0</span>/<span id="heart-total-count">21</span></strong>
+    </span>
+    <span class="heart-counter-track" aria-hidden="true"><i id="heart-counter-bar"></i></span>
+  </aside>
+
+  <!-- Easter egg: กดค้าง 2 วินาที -->
+  <button class="secret-heart" id="secret-heart" type="button" aria-label="กดค้างเพื่ออ่านข้อความลับ">
+    <span class="secret-ring" aria-hidden="true"></span><span>💚</span>
+    <small>กดค้าง</small>
+  </button>
+
+  <main class="app" id="app" aria-live="polite">
+    <section class="scene scene-1 is-active" data-scene="0" aria-label="หน้าเริ่มต้น">
+      <div class="nebula nebula-a"></div><div class="nebula nebula-b"></div>
+      <div class="planet planet-a"></div><div class="planet planet-b"></div>
+      <div class="scene-stickers" aria-hidden="true"><span>🎀</span><span>♡</span><span>✦</span></div>
+      <div class="scene-inner hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">จดหมายถึง ไอหมูอ้วน</p>
+          <h1 class="mega-title type-on-enter" data-text="HAPPY BIRTHDAY">HAPPY BIRTHDAY</h1>
+          <p class="thai-title reveal delay-2">ถึง ไอหมูอ้วนที่น่ารักที่สุดในโลกก 💚</p>
+          <p class="subtitle reveal delay-3">มีข้อความจากคนหล่อมาถึงไอหมูอ้วนแล้วว</p>
+          <div class="mini-love-note reveal delay-3"><span>♡</span> ทำให้เด็กอ้วนโดยเฉพาะ <span>♡</span></div>
+          <button class="primary-btn next-btn reveal delay-4" type="button"><span>กดเพื่อวาร์ป</span><span class="btn-arrow">➜</span></button>
+        </div>
+        <div class="hero-visual reveal delay-2">
+          <div class="ufo"><div class="ufo-dome"></div><div class="ufo-ring"></div><div class="ufo-lights"><i></i><i></i><i></i><i></i><i></i></div><div class="ufo-beam"></div></div>
+          <img class="alien alien-hero" src="assets/green-alien.png" alt="เจ้าตัวเขียวสามตากำลังต้อนรับ" />
+          <div class="orbit orbit-one"><span>★</span></div><div class="orbit orbit-two"><span>💚</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-question" data-scene="1" aria-label="หน้าคำถามสัญญา">
+      <div class="question-glow glow-a"></div><div class="question-glow glow-b"></div>
+      <div class="scene-stickers" aria-hidden="true"><span>🌷</span><span>💫</span><span>♡</span></div>
+      <div class="scene-inner question-layout">
+        <div class="question-visual reveal">
+          <div class="question-halo"></div><span class="question-spark q1">✦</span><span class="question-spark q2">💚</span><span class="question-spark q3">✦</span>
+          <img class="alien alien-question" src="assets/2.png" alt="เจ้าตัวเขียวกำลังรอคำตอบ" />
+        </div>
+        <div class="question-copy cute-card">
+          <div class="cute-card-pin" aria-hidden="true">💚</div>
+          <h2 class="big-thai question-title type-on-enter" data-text="สัญญากับเค้าได้ไหมม">สัญญากับเค้าได้ไหมม</h2>
+          <p class="question-subtitle reveal delay-2">ว่าจะอยู่กับเค้าไปนาน ๆ</p>
+          <div class="answer-row reveal delay-3">
+            <button class="primary-btn branch-btn answer-btn" data-go="3" type="button">OK 💚</button>
+            <button class="ghost-btn branch-btn answer-btn no-answer" data-go="2" type="button">No</button>
+          </div>
+          <p class="tiny-note reveal delay-4">เจ้าตัวเขียวกำลังลุ้นคำตอบอยู่ 👀</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-2" data-scene="2" aria-label="หน้าง้อ">
+      <div class="scene-stickers" aria-hidden="true"><span>🥺</span><span>🎀</span><span>✨</span></div>
+      <div class="scene-inner split-layout">
+        <div class="alien-card reveal cute-card">
+          <div class="speech-bubble">โอ๊ะ...ตรวจพบคนกำลังงอน!</div>
+          <img class="alien alien-wave" src="assets/green-alien.png" alt="เจ้าตัวเขียวกำลังง้อ" />
+          <div class="floating-heart h1">💚</div><div class="floating-heart h2">💚</div><div class="floating-heart h3">✨</div>
+        </div>
+        <div class="copy-panel">
+          <h2 class="big-thai type-on-enter" data-text="แง เค้ามาง้อแล้วนะ">แง เค้ามาง้อแล้วนะ</h2>
+          <p class="subtitle reveal delay-2">ส่งพลังใจข้ามกาแล็กซีมาให้แบบเต็มหลอดเลย</p>
+          <div class="choice-row reveal delay-3" id="choice-row">
+            <button class="primary-btn next-btn" type="button">หายงอนแล้ว 💚</button>
+            <button class="ghost-btn dodge-btn" id="dodge-btn" type="button">ยังไม่หาย 😤</button>
+          </div>
+          <p class="tiny-note reveal delay-4" id="dodge-note">ปุ่มขวาอาจมีระบบหลบหลีกอัตโนมัติ 👀</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-3" data-scene="3" aria-label="หน้าคำสัญญา">
+      <div class="scene-stickers" aria-hidden="true"><span>🌸</span><span>💚</span><span>🪐</span></div>
+      <div class="scene-inner promise-layout">
+        <div class="promise-copy">
+          <h2 class="big-thai type-on-enter" data-text="สัญญาแล้วนะ">สัญญาแล้วนะ</h2>
+          <p class="subtitle reveal delay-2">ปีนี้ขอให้ทุกวันมีเรื่องดี ๆ เข้ามาหานะอ้วนน</p>
+          <div class="promise-list reveal delay-3">
+            <div><span>01</span> ขอให้อ้วนอยู่กับเค้าไปนาน ๆ</div>
+            <div><span>02</span> ขอให้เจอแต่คนใจดี และมีแต่คนรักอ้วน</div>
+            <div><span>03</span> ขอให้ทำทุกเรื่องได้อย่างเต็มที่</div>
+            <div><span>04</span> ขอให้สมหวังในทุกเรื่องที่ตั้งใจ</div>
+          </div>
+          <button class="primary-btn next-btn reveal delay-4" type="button">รับคำอวยพร</button>
+        </div>
+        <div class="heart-core reveal delay-2 cute-card">
+          <div class="pulse-ring r1"></div><div class="pulse-ring r2"></div><div class="pulse-ring r3"></div>
+          <div class="heart-gem">💚</div>
+          <img class="alien alien-hug" src="assets/4.png" alt="เจ้าตัวเขียวส่งหัวใจ" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ควิซน่ารัก 3 ข้อ -->
+    <section class="scene scene-quiz" data-scene="4" aria-label="ควิซความทรงจำ">
+      <div class="scene-stickers" aria-hidden="true"><span>❔</span><span>🎀</span><span>💭</span></div>
+      <div class="scene-inner quiz-layout">
+        <div class="quiz-visual reveal">
+          <div class="quiz-planet"></div>
+          <img class="alien alien-quiz" src="assets/2.png" alt="เจ้าตัวเขียวกำลังตั้งคำถาม" />
+          <div class="quiz-bubble">ตอบตามใจได้เลย ไม่มีข้อผิด 💚</div>
+        </div>
+        <div class="quiz-card cute-card reveal delay-2">
+          <p class="eyebrow">MINI LOVE QUIZ</p>
+          <div class="quiz-progress" aria-label="ความคืบหน้าควิซ"><span id="quiz-progress-bar"></span></div>
+          <p class="quiz-step" id="quiz-step">ข้อ 1 จาก 3</p>
+          <h2 class="quiz-question" id="quiz-question">เค้าชอบอะไรในตัวเธอที่สุด?</h2>
+          <div class="quiz-options" id="quiz-options"></div>
+          <p class="quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+          <button class="primary-btn next-btn quiz-next" id="quiz-next" type="button" hidden>ไปเปิดกล่องความน่ารัก ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- กล่องสุ่มคำชม + ปุ่มกอด + ตัวนับวัน -->
+    <section class="scene scene-cute-lab" data-scene="5" aria-label="กล่องความน่ารัก">
+      <div class="scene-stickers" aria-hidden="true"><span>🎁</span><span>🫶</span><span>🌷</span></div>
+      <div class="scene-inner cute-lab-layout">
+        <div class="compliment-card cute-card reveal">
+          <p class="eyebrow">GALAXY COMPLIMENT BOX</p>
+          <div class="compliment-orb" aria-hidden="true"><span>💌</span></div>
+          <h2 class="big-thai compact-title">กล่องสุ่ม</h2>
+          <p class="compliment-text" id="compliment-text">กดปุ่มแล้วรับคำชมจากเค้าเลยย</p>
+          <button class="primary-btn" id="compliment-btn" type="button">กดรับคำชม ✨</button>
+          <div class="days-card" id="days-card" data-start-date="">
+            <span>♡</span>
+            <div><small>เวลาที่ได้รู้จักกัน</small><strong id="days-together">ทุกวันที่มีเธอล้วนพิเศษ</strong></div>
+          </div>
+        </div>
+        <div class="hug-zone reveal delay-2 cute-card" id="hug-zone">
+          <div class="hug-halo"></div>
+          <img class="alien alien-cuddle" id="hug-alien" src="assets/4.png" alt="เจ้าตัวเขียวพร้อมให้กอด" />
+          <h3>ขอกอดหน่อยได้ไหมม</h3>
+          <p id="hug-message">กอดหนึ่งครั้ง เติมพลังใจได้เต็มหลอด 💚</p>
+          <button class="ghost-btn hug-btn" id="hug-btn" type="button">กอดเจ้าตัวเขียว 🫂</button>
+          <button class="primary-btn next-btn lab-next" type="button">ไปดูความทรงจำ</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-4" data-scene="6" aria-label="หน้าความทรงจำ">
+      <div class="scene-stickers" aria-hidden="true"><span>📷</span><span>🌼</span><span>♡</span></div>
+      <div class="scene-inner memories-layout">
+        <div class="memory-copy">
+          <p class="eyebrow reveal">ความทรงจำของอ้วนน</p>
+          <h2 class="big-thai type-on-enter" data-text="ความทรงจำของเรา">ความทรงจำของเรา</h2>
+          <p class="memory-tip reveal delay-2">แตะรูปเพื่อเปิดดูแบบเต็มจอ 💚</p>
+          <div class="record-player reveal delay-3 cute-card">
+            <div class="record"><div class="record-label"><img src="assets/green-alien.png" alt="" /></div></div>
+            <div class="tonearm"></div><div class="player-dot d1"></div><div class="player-dot d2"></div>
+          </div>
+        </div>
+        <div class="polaroid-cloud reveal delay-2">
+          <!-- เปลี่ยน photo-1.png ถึง photo-4.png เป็นรูปคู่จริงได้ทันที -->
+          <figure class="polaroid p1 memory-item" tabindex="0" data-full="assets/IMG_0561.png" data-caption="วันแรก ที่เราไปเซ็นทรัลด้วยกัน">
+            <div class="photo-frame"><img class="memory-photo" src="assets/IMG_0561.png" alt="ความทรงจำรูปที่ 1" /></div><figcaption>วันแรก ที่เราไปเซ็นทรัลด้วยกัน</figcaption>
+          </figure>
+          <figure class="polaroid p2 memory-item" tabindex="0" data-full="assets/IMG_0563.png" data-caption="รอยยิ้มที่น่ารักที่สุดในโลกก">
+            <div class="photo-frame"><img class="memory-photo" src="assets/IMG_0563.png" alt="ความทรงจำรูปที่ 2" /></div><figcaption>ยิ้มที่น่ารักที่สุดในโลกก</figcaption>
+          </figure>
+          <figure class="polaroid p3 memory-item" tabindex="0" data-full="assets/IMG_0565.png" data-caption="รูปที่น่ารักที่สุดด">
+            <div class="photo-frame"><img class="memory-photo" src="assets/IMG_0565.png" alt="ความทรงจำรูปที่ 3" /></div><figcaption>วันที่มีเธออยู่ข้างๆ</figcaption>
+          </figure>
+          <figure class="polaroid p4 memory-item" tabindex="0" data-full="assets/IMG_0562.png" data-caption="รูปที่เค้าชอบที่สุดด">
+            <div class="photo-frame"><img class="memory-photo" src="assets/IMG_0562.png" alt="ความทรงจำรูปที่ 4" /></div><figcaption>วันที่เค้าจะเก็บไว้ตลอดไปป</figcaption>
+          </figure>
+          
+          <button class="primary-btn next-btn memory-next" type="button">ไปหน้าสุดท้าย</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-5" data-scene="7" aria-label="หน้าคำอวยพรสุดท้าย">
+      <div class="scene-stickers" aria-hidden="true"><span>🎂</span><span>🎀</span><span>✨</span></div>
+      <div class="scene-inner finale-layout">
+        <div class="gift-orbit reveal">
+          <div class="gift-box"><div class="gift-lid"></div><div class="gift-ribbon vertical"></div><div class="gift-ribbon horizontal"></div><div class="gift-bow"><i></i><i></i></div></div>
+          <img class="alien alien-finale" src="assets/3.png" alt="เจ้าตัวเขียวมอบของขวัญ" />
+          <div class="spark s1">✦</div><div class="spark s2">✦</div><div class="spark s3">★</div>
+        </div>
+        <article class="letter-card reveal delay-2 cute-card" id="birthday-card">
+          <div class="wax-seal" aria-hidden="true">💚</div>
+          <p class="letter-kicker">A MESSAGE FROM คนหล่อ</p>
+          <h2>Happy Birthday!</h2>
+          <p>
+            ขอให้ปีนี้เธอมีแต่ความสุข เจอแต่คนใจดี และสมหวังในทุกเรื่องที่อยากได้และอยากทำ
+            เค้าจะคอยซัพพอร์ตและอยู่ข้าง ๆ เสมอ ไม่ว่าจะเกิดอะไรขึ้นก็ยังมีเค้าอยู่ตรงนี้
+            ขอให้เธอคิดถึงแต่สิ่งดี ๆ มีแต่คนรัก สุขภาพร่างกายแข็งแรง ไม่ดื้อไม่ซนนะอ้วนนน
+            อายุ 17 แล้ว ขอให้ทุกการตัดสินใจผ่านการคิดอย่างรอบคอบ และขอให้เติบโตอย่างมีความสุขในแบบของตัวเอง
+            เธออยากได้อะไร เธอบอกเค้าได้เลยย ถ้าเค้าซื้อได้เค้าก็จะซื้อให้ เพราะเค้ารักเธอที่สุดในโลกกก
+            เค้ารักเธอนะ
+          </p>
+          <p class="signature">เค้ารักเธอมาก ๆ นะอ้วนน<br /><strong>— จากคนหล่อของเธอ</strong></p>
+          <div class="final-actions">
+            <button class="primary-btn" id="celebrate-btn" type="button">ฉลองอีกครั้ง 🎉</button>
+            <button class="ghost-btn save-card-btn" id="save-card-btn" type="button"><span aria-hidden="true">📸</span><span id="save-card-text">บันทึกการ์ดเป็นรูป</span></button>
+            <button class="ghost-btn" id="restart-btn" type="button">เริ่มใหม่</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <nav class="scene-nav" aria-label="เลือกหน้า">
+    <button class="nav-dot is-active" data-go="0" aria-label="หน้า 1"></button>
+    <button class="nav-dot" data-go="1" aria-label="หน้า 2"></button>
+    <button class="nav-dot" data-go="2" aria-label="หน้า 3"></button>
+    <button class="nav-dot" data-go="3" aria-label="หน้า 4"></button>
+    <button class="nav-dot" data-go="4" aria-label="หน้า 5"></button>
+    <button class="nav-dot" data-go="5" aria-label="หน้า 6"></button>
+    <button class="nav-dot" data-go="6" aria-label="หน้า 7"></button>
+    <button class="nav-dot" data-go="7" aria-label="หน้า 8"></button>
+  </nav>
+
+  <div class="scene-counter" id="scene-counter" aria-hidden="true"><span id="scene-current">01</span><i></i><b>08</b></div>
+  <button class="music-status" id="music-status" type="button" aria-label="เปิดหรือปิดเพลง">
+    <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="music-copy"><strong id="music-status-text">แตะครั้งแรกเพื่อเปิดเพลง ♫</strong><small>เธอทั้งนั้น - Groove Riderss</small></span>
+  </button>
+  <div class="cute-toast" id="cute-toast" role="status" aria-live="polite"></div>
+  <div class="swipe-hint" aria-hidden="true">ปัดซ้าย–ขวา หรือกดปุ่มเพื่อเปลี่ยนหน้า</div>
+
+  <!-- Lightbox รูปความทรงจำ -->
+  <div class="memory-lightbox" id="memory-lightbox" role="dialog" aria-modal="true" aria-label="รูปความทรงจำ" hidden>
+    <button class="modal-close" id="lightbox-close" type="button" aria-label="ปิดรูป">×</button>
+    <div class="lightbox-card"><img id="lightbox-image" src="" alt="" /><p id="lightbox-caption"></p></div>
+  </div>
+
+  <!-- ข้อความลับ -->
+  <div class="secret-modal" id="secret-modal" role="dialog" aria-modal="true" aria-labelledby="secret-title" hidden>
+    <div class="secret-card">
+      <button class="modal-close" id="secret-close" type="button" aria-label="ปิดข้อความลับ">×</button>
+      <div class="secret-sparkles" aria-hidden="true">✦ ♡ ✨ 💚 ✦</div>
+      <p class="eyebrow">SECRET MESSAGE UNLOCKED</p>
+      <h2 id="secret-title">เจอข้อความลับแล้วว</h2>
+      <p>หนูรู้มั้ยพี่ โครตตั้งใจทำทุกอย่างนี้เพื่อหนูเลยนะ พี่อยากให้หนูมีความสุขที่สุด พี่รักหนูมากๆนะครับ เป็นเด็กดีของพี่นะครับ อย่าดื้อให้มันมากพี่รักหนูนะครับ💚</p>
+      <button class="primary-btn" id="secret-ok" type="button">เก็บข้อความนี้ไว้ในใจ</button>
+    </div>
+  </div>
+
+  <!-- วงล้อข้อความลับ: เปิดเมื่อเก็บหัวใจครบ 21 ดวง -->
+  <div class="heart-reward-modal prize-wheel-modal" id="heart-reward-modal" role="dialog" aria-modal="true" aria-labelledby="heart-reward-title" hidden>
+    <div class="heart-reward-stars wheel-space-stars" aria-hidden="true">
+      <span>✦</span><span>💚</span><span>✨</span><span>♡</span><span>✦</span><span>🪐</span><span>💫</span>
+    </div>
+
+    <article class="prize-wheel-card">
+      <button class="modal-close prize-wheel-close" id="heart-reward-close" type="button" aria-label="ปิดวงล้อ">×</button>
+
+      <header class="prize-wheel-header">
+        <div class="wheel-unlock-badge"><span>21</span><small>HEARTS</small></div>
+        <div>
+          <p class="prize-wheel-kicker">GALAXY MESSAGE WHEEL</p>
+          <h2 id="heart-reward-title">วงล้อ เสี่ยงดวงงง</h2>
+          <p>เก็บหัวใจครบแล้ว หมุนได้เเค้ครั้งเดียวนะ 💚</p>
+        </div>
+      </header>
+
+      <div class="prize-wheel-layout">
+        <section class="wheel-stage" aria-label="วงล้อสุ่มข้อความ 7 ช่อง">
+          <div class="wheel-glow-ring" aria-hidden="true"></div>
+          <div class="wheel-pointer" aria-hidden="true"><span></span></div>
+
+          <div class="message-wheel" id="message-wheel">
+            <div class="wheel-labels" id="wheel-labels" aria-hidden="true"></div>
+            <div class="wheel-center" aria-hidden="true">
+              <span>👽</span>
+              <small>LUCKY</small>
+            </div>
+          </div>
+
+          <div class="wheel-particles" id="wheel-particles" aria-hidden="true"></div>
+        </section>
+
+        <section class="wheel-control-panel">
+          <img class="wheel-alien" src="assets/4.png" alt="เจ้าตัวเขียวกำลังถือหัวใจ" />
+
+          <div class="wheel-ready-copy" id="wheel-ready-copy">
+            <p class="wheel-mini-label">ONE CHANCE ONLY</p>
+            <h3>ถ้าพร้อมเเล้วก็กดเลยย</h3>
+            <p>ขอให้อ้วน ได้ของที่อ้วนอยากได้นะะ</p>
+          </div>
+
+          <div class="wheel-result" id="wheel-result" hidden aria-live="polite">
+            <p class="wheel-result-eyebrow" id="wheel-result-eyebrow">YOUR GALAXY MESSAGE</p>
+            <div class="wheel-result-icon" id="wheel-result-icon">💚</div>
+            <blockquote id="wheel-result-message"></blockquote>
+            <small>ข้อความนี้ถูกเลือกมาให้เธอเพียงครั้งเดียว ✨</small>
+          </div>
+
+          <button class="primary-btn wheel-spin-button" id="wheel-spin-button" type="button">
+            <span class="wheel-spin-icon">✦</span>
+            <span id="wheel-spin-text">หมุนวงล้อข้อความ</span>
+            <span class="wheel-spin-arrow">➜</span>
+          </button>
+
+          <p class="wheel-status" id="wheel-status" role="status" aria-live="polite">ครบ 21/21 แล้ว ปลดล็อกวงล้อสำเร็จ</p>
+        </section>
+      </div>
+    </article>
+  </div>
+
+  <audio id="memory-music" src="assets/memory-song.mp3" preload="metadata" loop playsinline></audio>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
