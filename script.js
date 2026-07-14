@@ -4,8 +4,8 @@
    ========================================================= */
 (() => {
   'use strict';
-  const RELEASE_DATE = new Date(Date.now() + 2 * 1 * 1000);
-  // const RELEASE_DATE = new Date('2026-09-09T00:00:00+07:00');
+  // const RELEASE_DATE = new Date(Date.now() + 2 * 1 * 1000);
+  const RELEASE_DATE = new Date('2026-09-09T00:00:00+07:00');
   const RELEASE_STARTED_AT = new Date('2026-07-14T00:00:00+07:00');
   const gate = document.getElementById('release-gate');
   const daysEl = document.getElementById('release-days');
