@@ -262,6 +262,18 @@ button:focus-visible { outline: 3px solid var(--green-1); outline-offset: 4px; }
   .swipe-hint{display:none}
 }
 
+
+@keyframes mobileCharPop {
+  0% { opacity:0; transform:translate3d(0,.58em,0) scale(.78) rotate(5deg); }
+  68% { opacity:1; transform:translate3d(0,-.08em,0) scale(1.06) rotate(-1deg); }
+  100% { opacity:1; transform:translate3d(0,0,0) scale(1) rotate(0); }
+}
+@keyframes mobileTitleGlow {
+  0%,35% { text-shadow:0 8px 0 rgba(26,69,24,.85),0 18px 35px rgba(0,0,0,.34); }
+  65% { text-shadow:0 8px 0 rgba(26,69,24,.85),0 18px 35px rgba(0,0,0,.34),0 0 28px rgba(207,255,98,.5); }
+  100% { text-shadow:0 8px 0 rgba(26,69,24,.85),0 18px 35px rgba(0,0,0,.34); }
+}
+
 @keyframes mobileTitleIn {
   from { opacity: 0; transform: translate3d(0, 16px, 0) scale(.985); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
@@ -875,16 +887,20 @@ button {
     animation-duration: 5.5s !important;
   }
 
-  /* มือถือ: ขยับหัวข้อทั้งก้อนแทนการแยกตัวอักษรทีละตัว ลดอาการกระตุก */
+  /* มือถือ: แสดงเอฟเฟกต์ตัวอักษรทีละตัวแบบเบาเครื่อง */
   .type-on-enter .char {
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 0;
+    transform: translate3d(0,.58em,0) scale(.78) rotate(5deg);
     filter: none !important;
-    animation: none !important;
+    animation: none;
+    will-change: transform, opacity;
+  }
+  .is-active .type-on-enter .char {
+    animation: mobileCharPop .46s cubic-bezier(.18,.85,.28,1.22) forwards;
+    animation-delay: calc(var(--i) * 28ms + 90ms);
   }
   .is-active .type-on-enter {
-    animation: mobileTitleIn .38s cubic-bezier(.2,.8,.2,1) both;
-    will-change: transform, opacity;
+    animation: mobileTitleGlow 1.15s ease-out .12s both;
   }
 
   /* กันภาพ/เอฟเฟกต์ฝั่งขวาทับพื้นที่แตะปุ่มรับคำอวยพร */
