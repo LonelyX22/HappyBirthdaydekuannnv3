@@ -2302,3 +2302,112 @@ body.release-locked > :not(.release-gate) { pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   .release-gate *, .release-gate::before, .release-gate::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* =========================================================
+   MOBILE PERFORMANCE + LIGHTWEIGHT TOUCH DELIGHT
+   ลดงาน paint/composite หนัก ๆ แต่คงบรรยากาศและการตอบสนองไว้
+   ========================================================= */
+.mobile-tap-spark {
+  position: fixed;
+  z-index: 13000;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  font-size: 18px;
+  color: #eaff86;
+  transform: translate3d(-50%, -50%, 0);
+  text-shadow: 0 0 10px rgba(202,255,96,.7);
+  animation: mobileTapSpark .62s cubic-bezier(.2,.85,.2,1) forwards;
+}
+@keyframes mobileTapSpark {
+  0% { opacity: 0; transform: translate3d(-50%,-45%,0) scale(.45) rotate(-18deg); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(-50%,-145%,0) scale(1.15) rotate(18deg); }
+}
+@keyframes mobileTapBounce {
+  45% { transform: translate3d(0,3px,0) scale(.96); }
+}
+
+@media (max-width: 860px), (pointer: coarse) {
+  html { background:#061109; }
+  body { overscroll-behavior:none; }
+
+  /* ฉากที่ซ่อนอยู่ไม่ควรถูกวาดหรือทำ animation ต่อ */
+  .scene:not(.is-active):not(.is-leaving) {
+    content-visibility:hidden;
+    contain:layout paint style;
+  }
+  .scene-inner,
+  .release-card,
+  .password-card,
+  .countdown-content,
+  .prize-wheel-card { contain:layout paint; }
+
+  /* การเปลี่ยนฉากใช้เฉพาะ opacity/transform ซึ่ง GPU ทำได้ลื่นกว่า blur */
+  .scene {
+    filter:none !important;
+    transform:translate3d(5%,0,0) scale(.97);
+    transition:opacity .36s ease,transform .42s var(--ease),visibility 0s linear .42s;
+    perspective:none;
+  }
+  .scene.is-active { transform:translate3d(0,0,0) scale(1); }
+  .scene.is-leaving { filter:none !important;transform:translate3d(-5%,0,0) scale(1.02); }
+
+  /* ลดพื้นที่โปร่งเบลอที่แพงบน GPU มือถือ */
+  .release-card,
+  .password-card,
+  .question-copy,
+  .cute-card,
+  .scene-nav,
+  .sound-toggle,
+  .music-status,
+  .dev-menu-backdrop,
+  .prize-wheel-modal { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+
+  /* หยุด decoration ที่ซ้อนกันเยอะ เหลือเฉพาะตัวหลักที่ยังดูมีชีวิต */
+  .cute-aurora,
+  .soft-grain,
+  .nebula,
+  .question-glow,
+  .countdown-nebula,
+  .release-gate::after,
+  .release-orbit.orbit-two,
+  .scene-stickers span:nth-child(n+3),
+  .cute-decor span:nth-child(even) { display:none !important; }
+
+  .alien,
+  .release-alien,
+  .password-alien-image,
+  .wheel-alien { filter:drop-shadow(0 12px 14px rgba(0,0,0,.34)); }
+  .scene::before { inset:10px;box-shadow:none; }
+  .cute-card,
+  .question-copy,
+  .alien-card,
+  .letter-card { box-shadow:0 15px 38px rgba(0,0,0,.3); }
+
+  .is-active .reveal { animation-duration:.48s; }
+  .is-active .char { animation-duration:.38s; }
+  .mobile-tap-bounce { animation:mobileTapBounce .24s ease; }
+
+  /* ป้องกัน hover ค้างหลังแตะบนมือถือ */
+  .primary-btn:hover,
+  .ghost-btn:hover,
+  .memory-item:hover,
+  .polaroid:hover,
+  .promise-list div:hover { transform:none; }
+}
+
+@media (max-width: 520px) {
+  #space-canvas { background:linear-gradient(145deg,#07150c 0%,#0c2714 52%,#09101a 100%); }
+  .ufo-beam,.orbit-two,.pulse-ring.r3,.countdown-stars span:nth-child(n+3) { display:none !important; }
+  .release-star,.scene-stickers span,.cute-decor span { filter:none !important; }
+  .release-time-box::before { animation:none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-tap-spark,.mobile-tap-bounce { animation:none !important;display:none !important; }
+}
