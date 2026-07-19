@@ -4,8 +4,8 @@
    ========================================================= */
 (() => {
   'use strict';
-  const RELEASE_DATE = new Date(Date.now() + 2 * 2 * 1000);
-  //const RELEASE_DATE = new Date('2026-09-09T00:00:00+07:00');
+  const RELEASE_DATE = new Date(Date.now() + 2 * 1 * 1000);
+  // const RELEASE_DATE = new Date('2026-09-10T00:00:00+07:00');
   const RELEASE_STARTED_AT = new Date('2026-07-14T00:00:00+07:00');
   const gate = document.getElementById('release-gate');
   const daysEl = document.getElementById('release-days');
@@ -369,9 +369,10 @@ soundToggle.addEventListener('click', () => {
     }));
   }
   let lastFrame = 0;
+  let spaceFrame = 0;
   function drawSpace(t) {
-    // มือถือวาดประมาณ 30fps เพื่อลดโหลด GPU แต่ยังดูต่อเนื่อง
-    if (!document.hidden && (!lowPowerMode || t - lastFrame >= 32)) {
+    // มือถือวาดประมาณ 24fps และหยุด loop จริงเมื่อสลับแอป/ล็อกจอ
+    if (!lowPowerMode || t - lastFrame >= 42) {
       lastFrame = t;
       ctx.clearRect(0,0,innerWidth,innerHeight);
       stars.forEach((s) => {
@@ -381,14 +382,67 @@ soundToggle.addEventListener('click', () => {
         ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
       });
     }
-    requestAnimationFrame(drawSpace);
+    spaceFrame = requestAnimationFrame(drawSpace);
   }
   let resizeTimer;
   addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(resizeCanvas, 120);
   }, { passive:true });
-  resizeCanvas(); requestAnimationFrame(drawSpace);
+  function startSpace() {
+    if (document.hidden || spaceFrame) return;
+    spaceFrame = requestAnimationFrame((time) => {
+      spaceFrame = 0;
+      drawSpace(time);
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(spaceFrame);
+      spaceFrame = 0;
+    } else {
+      lastFrame = 0;
+      startSpace();
+    }
+  });
+
+  resizeCanvas(); startSpace();
+})();
+
+/* =========================================================
+   MOBILE TOUCH FX — feedback เบา ๆ ที่ใช้เฉพาะ transform/opacity
+   ========================================================= */
+(() => {
+  const coarsePointer = matchMedia('(max-width: 860px), (pointer: coarse)').matches;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!coarsePointer || reduceMotion) return;
+
+  let lastSpark = 0;
+  document.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' || document.body.classList.contains('release-locked')) return;
+    if (event.target.closest('input, textarea, select, .message-wheel')) return;
+
+    const now = performance.now();
+    if (now - lastSpark < 160) return;
+    lastSpark = now;
+
+    const spark = document.createElement('span');
+    spark.className = 'mobile-tap-spark';
+    spark.textContent = Math.random() > .5 ? '✦' : '💚';
+    spark.style.left = `${event.clientX}px`;
+    spark.style.top = `${event.clientY}px`;
+    document.body.appendChild(spark);
+    spark.addEventListener('animationend', () => spark.remove(), { once: true });
+
+    const button = event.target.closest('button');
+    if (button) {
+      button.classList.remove('mobile-tap-bounce');
+      void button.offsetWidth;
+      button.classList.add('mobile-tap-bounce');
+      button.addEventListener('animationend', () => button.classList.remove('mobile-tap-bounce'), { once: true });
+    }
+  }, { passive: true });
 })();
 
 /* =========================================================
@@ -1411,6 +1465,28 @@ const WHEEL_PRIZES = [
   const saveCardText = document.getElementById('save-card-text');
   const birthdayCard = document.getElementById('birthday-card');
   let savingCard = false;
+  let html2CanvasPromise = null;
+
+  function loadHtml2Canvas() {
+    if (typeof window.html2canvas === 'function') return Promise.resolve(window.html2canvas);
+    if (html2CanvasPromise) return html2CanvasPromise;
+
+    html2CanvasPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+      script.async = true;
+      script.onload = () => typeof window.html2canvas === 'function'
+        ? resolve(window.html2canvas)
+        : reject(new Error('html2canvas unavailable'));
+      script.onerror = () => reject(new Error('html2canvas failed to load'));
+      document.head.appendChild(script);
+    }).catch((error) => {
+      html2CanvasPromise = null;
+      throw error;
+    });
+
+    return html2CanvasPromise;
+  }
 
   async function saveBirthdayCard() {
     if (savingCard || !birthdayCard) return;
@@ -1420,9 +1496,7 @@ const WHEEL_PRIZES = [
 
     let clone = null;
     try {
-      if (typeof window.html2canvas !== 'function') {
-        throw new Error('โหลดระบบบันทึกรูปไม่สำเร็จ กรุณาเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่');
-      }
+      const html2canvas = await loadHtml2Canvas();
 
       await document.fonts?.ready;
       clone = birthdayCard.cloneNode(true);
@@ -1435,7 +1509,7 @@ const WHEEL_PRIZES = [
       // ให้เบราว์เซอร์คำนวณ layout ของการ์ดสำเนาก่อนจับภาพ
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 
-      const canvas = await window.html2canvas(clone, {
+      const canvas = await html2canvas(clone, {
         backgroundColor: null,
         scale: Math.min(2, Math.max(1.5, window.devicePixelRatio || 1)),
         useCORS: true,
